@@ -19,14 +19,14 @@ function App() {
           </a>
         </span>
         <span>
-          <span>Linkedin profile </span>
+          <span>Linkedin </span>
           <a
             className="App-link"
             href="https://www.linkedin.com/in/povilas-urbonas-0a6a53a4/"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Repositorty
+            profile
           </a>
         </span>
         <Counter />
