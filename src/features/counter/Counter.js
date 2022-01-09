@@ -24,18 +24,6 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-// function createData(name, calories, fat, carbs, protein) {
-//   return { name, calories, fat, carbs, protein };
-// }
-
-// const rows = [
-//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-//   createData('Eclair', 262, 16.0, 24, 6.0),
-//   createData('Cupcake', 305, 3.7, 67, 4.3),
-//   createData('Gingerbread', 356, 16.0, 49, 3.9),
-// ];
-
 const tableStyles = {
   display: 'flex',
 };
@@ -44,19 +32,13 @@ export function Counter() {
   const count = useSelector(selectCount);
   const allcoins = useSelector(selectCoins);
   const currentCoin = useSelector(selectedCoin);
-  console.log('allcoins');
-  console.log(allcoins);
-  console.log('currentCoin.name');
-  console.log(currentCoin.name);
+
   const dispatch = useDispatch();
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   const incrementValue = Number(incrementAmount) || 0;
   const { history } = currentCoin;
 
-  //
-  // const [addrtype, setAddrtype] = useState(['Work', 'Home', 'school']);
-  // const Add = addrtype.map((Add) => Add);
   const handleCurrencyChange = (e) => {
     console.log(e.target.value);
     dispatch(getCoinsAsync(e.target.value));
@@ -65,9 +47,6 @@ export function Counter() {
   const [fetchedCurrencies, setFetchedCurrencies] = useState([]);
   useEffect(() => {
     const fetchAPI = async () => {
-      console.log('lets call currencies');
-      // setFetchedCurrencies(await fetchCurrencies());
-      console.log('      dispatch(getCoinInfoAsync())');
       dispatch(getCoinsAsync());
     };
     fetchAPI();
@@ -97,28 +76,13 @@ export function Counter() {
   //
   return (
     <div>
-      <p>Select Currency</p>
-      {currencySelector}
-      <p>Selected currency is: {currentCoin.name}</p>
-      <p>Symbol: {currentCoin.symbol}</p>
-      {/* <p>Description: {currentCoin.description}</p> */}
-
-      <p>
-        iconUrl: <img src={currentCoin.iconUrl} width={20} height={20} />{' '}
-        {/* {currentCoin.iconUrl} */}
-      </p>
-      <p>websiteUrl: {currentCoin.websiteUrl}</p>
-      <p>volume: {currentCoin.volume}</p>
-      <p>marketCap: {currentCoin.marketCap}</p>
-      <p>rank: {currentCoin.rank}</p>
-      <p>price: {currentCoin.price}</p>
-      {/* <p>allTimeHigh: {currentCoin.allTimeHigh}</p> */}
+      <h1>Crypto currencies</h1>
       {allcoins && (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>rank</TableCell>
+                <TableCell>Rank</TableCell>
                 <TableCell align="right">Name</TableCell>
                 <TableCell align="right">Price</TableCell>
                 <TableCell align="right">Market Cap</TableCell>
