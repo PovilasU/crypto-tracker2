@@ -11,7 +11,18 @@ function App() {
           <span>Github </span>
           <a
             className="App-link"
-            href="https://reactjs.org/"
+            href="https://github.com/PovilasU/crypto-tracker2"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Repositorty
+          </a>
+        </span>
+        <span>
+          <span>Linkedin profile </span>
+          <a
+            className="App-link"
+            href="https://www.linkedin.com/in/povilas-urbonas-0a6a53a4/"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -1,19 +1,7 @@
 import React, { useState, Component, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Line } from 'react-chartjs-2';
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
-  getCoinInfo,
-  getCoinInfoAsync,
-  getCoinsAsync,
-  selectCoins,
-  selectedCoin,
-} from './counterSlice';
+import { getCoinsAsync, selectCoins, selectedCoin } from './counterSlice';
 import styles from './Counter.module.css';
 
 import Table from '@mui/material/Table';
@@ -29,18 +17,11 @@ const tableStyles = {
 };
 
 export function Counter() {
-  const count = useSelector(selectCount);
   const allcoins = useSelector(selectCoins);
   const currentCoin = useSelector(selectedCoin);
-
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
-
-  const incrementValue = Number(incrementAmount) || 0;
-  const { history } = currentCoin;
 
   const handleCurrencyChange = (e) => {
-    console.log(e.target.value);
     dispatch(getCoinsAsync(e.target.value));
   };
 
@@ -52,13 +33,8 @@ export function Counter() {
     fetchAPI();
   }, [setFetchedCurrencies]);
 
-  //const currencySelector = fetchedCurrencies ? (
   const currencySelector = allcoins ? (
-    <select
-      defaultValue=""
-      //  onChange={(e) => handleCurrencyChange(e.target.value)}
-      onChange={(e) => handleCurrencyChange(e)}
-    >
+    <select defaultValue="" onChange={(e) => handleCurrencyChange(e)}>
       <option value={allcoins[0].name}>{allcoins[0].name}</option>
       {allcoins.map((coin, i) => {
         return (
@@ -88,7 +64,6 @@ export function Counter() {
                 <TableCell align="right">Market Cap</TableCell>
                 <TableCell align="right">Volume</TableCell>
                 <TableCell align="right">Total Supply</TableCell>
-                {/* <TableCell align="right">Last 7 Days</TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
