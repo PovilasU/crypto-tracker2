@@ -69,13 +69,19 @@ export const coinSlice = createSlice({
       .addCase(getCoinsAsync.fulfilled, (state, action) => {
         console.log('what is payload?');
         console.log(action.payload);
+        console.log('what is coinsjson.data.coins?');
+        console.log(coinsjson.data.coins);
         state.cointstatus = 'idle getcoins';
-        state.allcoins = action.payload.allcoins;
+        if (action.payload) {
+          state.allcoins = action.payload.allcoins;
+        } else {
+          state.allcoins = coinsjson.data.coins;
+        }
 
-        const index = action.payload.allcoins.coins.findIndex(
-          (coin) => coin.name === action.payload.selectedCoin
-        );
-        state.selectedCoin = action.payload.allcoins.coins[index];
+        // const index = action.payload.allcoins.coins.findIndex(
+        //   (coin) => coin.name === action.payload.selectedCoin
+        // );
+        // state.selectedCoin = action.payload.allcoins.coins[index];
       });
   },
 });
