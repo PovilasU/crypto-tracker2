@@ -18,10 +18,10 @@ const tableStyles = {
 };
 
 export function Counter() {
-  //  const allcoins = useSelector(selectCoins);
-  const allcoins = coinsjson.data.coins;
-  console.log('what is allcoins');
-  console.log(allcoins);
+  const allcoins = useSelector(selectCoins);
+  // const allcoins = coinsjson.data.coins;
+  // console.log('what is allcoins');
+  // console.log(allcoins);
   const currentCoin = useSelector(selectedCoin);
   const dispatch = useDispatch();
 

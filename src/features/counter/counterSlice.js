@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import axios from 'axios';
+import { coinsjson } from '../coins';
+
+console.log('1 what is coinsjosn');
+console.log(coinsjson);
 const initialState = {
   selectedCoin: '',
   value: 0,
@@ -33,9 +37,14 @@ export const getCoinsAsync = createAsyncThunk(
         return { allcoins: response.data.data, selectedCoin: name };
       })
       .catch(function (error) {
+        // console.log('error wjat is data?');
+        // data = coinsjson;
+        // console.log(coinsjson);
         console.error(error);
+        //return data;
       });
-
+    console.log('2wjat is data?');
+    console.log(data);
     return data;
   }
 );
@@ -58,6 +67,8 @@ export const coinSlice = createSlice({
         state.cointstatus = 'loading getcoins';
       })
       .addCase(getCoinsAsync.fulfilled, (state, action) => {
+        console.log('what is payload?');
+        console.log(action.payload);
         state.cointstatus = 'idle getcoins';
         state.allcoins = action.payload.allcoins;
 
