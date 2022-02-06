@@ -11,13 +11,17 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { coinsjson } from '../coins';
 
 const tableStyles = {
   display: 'flex',
 };
 
 export function Counter() {
-  const allcoins = useSelector(selectCoins);
+  //  const allcoins = useSelector(selectCoins);
+  const allcoins = coinsjson.data.coins;
+  console.log('what is allcoins');
+  console.log(allcoins);
   const currentCoin = useSelector(selectedCoin);
   const dispatch = useDispatch();
 

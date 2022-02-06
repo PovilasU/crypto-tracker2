@@ -15,10 +15,14 @@ export const getCoinsAsync = createAsyncThunk(
   async (name = 'Bitcoin') => {
     const options = {
       method: 'GET',
-      url: 'https://coinranking1.p.rapidapi.com/coins',
+      // url: 'https://coinranking1.p.rapidapi.com/coins',
+      url: 'https://api.coinranking.com/v2/coins',
       headers: {
-        'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-        'x-rapidapi-key': 'a04a42f516msh9ddeba91e46f3ffp148a0fjsn2f56e34b16d1',
+        'x-access-token':
+          'coinrankingd4e06d9b7f718cb51194bea6042a7ee77e54a34008c2ade2',
+        'Access-Control-Allow-Origin': '*',
+        // 'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
+        // 'x-rapidapi-key': 'a04a42f516msh9ddeba91e46f3ffp148a0fjsn2f56e34b16d1',
       },
     };
 
